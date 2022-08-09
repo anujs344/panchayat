@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PostImage extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'post_id',
+        'post_image_gallery_id',
+    ];
+
+    public function postImageGallery()
+    {
+        return $this->belongsTo(PostImageGallery::class, 'post_image_gallery_id', 'id');
+    }
+    
+    function postSlider()
+    {
+        return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
+
+}
